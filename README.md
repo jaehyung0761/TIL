@@ -1,6 +1,10 @@
 TIL
 ---
 
+###[Python](./Python/readme.md)
+
+
+.
 ## Table of Contents
 
   1. [Types](#types)

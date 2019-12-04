@@ -81,12 +81,13 @@
     
     - 확장열
     > 개행이나 탭등 문자열에 담기힘든 문자나 특수문자는 \문자를 앞에 붙여준다.
-    
-    \n - 개행\
-    \t - 탭\
-    \' - 작은 따옴표\
-    \" - 큰 따옴표\
+    ```python
+    \n - 개행
+    \t - 탭
+    \' - 작은 따옴표
+    \" - 큰 따옴표
     \\ - 문자
+    ```
     
     - 긴 문자열
     > 너무 긴 문자열은 따옴표 세 개를 연속으로 사용하고 개행되는 곳에 \를 사용하면 개행이 되지 않는다.
@@ -122,9 +123,253 @@
 **[⬆ back to top](#table-of-contents)**
 
 ### 연산자
+  - 3.1 **산술 및 대입**
+    - 산술 연산자
+    > + 더하기, - 빼기, * 곱하기, / 나누기
+    ```python
+    print(3 + 4)    # 7 
+    print(5 - 2)    # 3
+    print(2 * 4)    # 8 
+    print(8 / 2)    # 4.0
+    ```
+    - 고급 연산자
+    > ** 거듭제곱, // 정수나누기, % 나머지
+    ```python
+    print(11 ** 2)  # 121
+    print(5 / 2)    # 2.5 
+    print(5 // 2)   # 2
+    print(7 % 2)    # 1 
+    print(8 % 3)    # 
+    ```
+    
+    - 복합 대입 연산자
+    > 우변의 값이나 수식을 계산하여 좌변에 대입한다.
+    ```python
+    a = 5
+    a += 1
+    print(a)
+    ```
+  - 3.2 **타입 변환**  
+    - 문자열 연산
+    > 문자열도 연산이 가능하지만 수학적인 연산과는 다르다.
+    ```python
+    a = 5
+    s1 = "대한민국"
+    s2 = "만세" 
+    print(s1 + s2) 
+    print("대한민국" + "만세")
+    print("만세" * 5) # 만세가 5번 출력된다.
+    print("-" * 40) # -가 40번 출력된다.
+    ```
+    
+    - 정수와 문자열 연산
+    > 정수와 문자열은 섞어서 사용할 수 없어서 같은 타입으로 바꿔서 사용해야한다.
+    ```python
+    print("대한민국" + str(2002)
+    print("대한민국" + str(2002)
+    ```    
+
+    - 실수의 변환
+    > 문자열을 실수로 변환 : float, 실수를 정수로 변환 : int, 반올림 : round
+    ```python
+    print(10 + float("10.4"))         # 20.4 
+    print(10 + int(22.5))             # 32 
+    print(10 + int(float("12.4")))    # 22
+    print(int(2.54))                  # 2 
+    print(round(2.54))                # 3 
+    print(round(2.54, 1))             # 2.5 / 소수점 한자리수까지남긴다.
+    print(round(123456, -3))          # 123000 / 뒤에서 3자리를 0으로 처리한다.
+    ```
+    
+**[⬆ back to top](#table-of-contents)**
 
 ### 조건문
+  - 4.1 **if 조건문**
+    - if문
+    > 조건의 진위 여부에 따라 명령을 실행하며 if키워드를 쓰고 조건과 콜론(:)을 찍은다음 명령을 작성한다.
+    ```python
+    age = 10 
+    if age < 19:   
+    print("청소년 입니다")
+    ```
+
+    - 비교 연산자
+    > 두 값의 같고 다름과 대소관계를 비교하여 True와 False로 리턴한다.
+    ```python
+    == - 같다
+    != - 다르다
+    < - 우변이 크다
+    > - 좌변이 크다
+    <= - 우변이 크거나 같다
+    >= - 좌변이 크거나 같다
+    ```
+    
+    - 논리 연산자
+    > 두 개 이상의 조건을 한번에 점걸할 때 사용한다.
+    ```python
+    and - 두 조건이 모두 참이다.
+    or - 두 조건중 하나라도 참이다.
+    not - 조건을 반대로 뒤집는다.
+    ```
+    ```python
+     a = 3 
+     b = 4 
+     if a == 3 and b == 4:   
+       print("AND OK") 
+     if a == 3 and not b == 8:   
+       print("AND OK") 
+     if a == 3 or b == 8:   
+       print("OR OK"
+    ```   
+  - 4.2 **블록 구조**
+    - 블록 구조 
+    > 들여쓰기 수준이 같을때(if문이 True일때만 출력된다)
+    ```python
+    age = 16 
+    if age < 19:   
+      print("청소년 입니다.")   
+      print("공부 열심히 해야지")
+    ```
+    > 들여쓰기 수준이 다를때(공부 열심히 해야지는 if문과 상관없이 무조건 출력된다)
+    ```python
+    age = 16 
+    if age < 19:   
+      print("청소년 입니다.")   
+    print("공부 열심히 해야지")
+    ```
+    - else문
+    > 조건의 진위에 따라 실행할 명령을 선택한다.한,번만 사용할 수 있다.
+    ```python
+    age = 22 
+    if age < 19:   
+      print("학생입니다") 
+    else:   
+      print("어서 옵쇼")
+    ```
+
+    - elif문
+    > if와 else사이에 여러개 들어갈 수 있으며 조건을 더 추가할때 사용한다.
+    ```python
+    age = 22 
+    if age < 19:   
+      print("학생입니다") 
+    elif age< 25:
+      print("대학생입니다")
+    else:   
+      print("어서 옵쇼")
+    ```
+    - elif문 중첩
+    > if안에 또 if문이 들어갈 수 있다.
+    ```python
+    age = 23 
+    if age < 19:   
+      print("청소년입니다.") 
+    else:   
+    if age < 25:       
+      print("대학생입니다.")   
+    else:       
+      print("어서 옵쇼")
+    ```
+    - Rock Scissor Paper GAME
+    > 컴퓨터와 가위바위보 게임하는 예제
+    ```python
+    import random
+    com = ['가위','바위','보']
+    computer = com[random.randint(0,2)]   #com리스트에 담겨진 값을 랜덤으로 인덱싱하여 가져온다
+    me = input("가위 바위 보!!")
+    print("컴퓨터 : "+computer,"",sep="\n")
+
+    if computer == me:
+        print("비겼습니다 한번더")
+    elif computer == "가위" and me == "바위":
+        print("이겼습니다")
+    elif computer == "바위" and me == "보":
+        print("이겼습니다")
+    elif computer == "보" and me == "가위":
+        print("이겼습니다")
+    elif me != "가위" and me !="바위" and me !="보":
+        print("오타났습니다")
+    else:
+        print("졌습니다 다음기회에")
+    ```
+    
 ### 반복문
+  - 5.1 **반복문**
+    - while 반복문
+    > 조건이 만족하는 동안 계속 실행된다.
+    ```python
+    student = 1 
+    while student <= 5:   
+      print(student, "번 학생의 성적을 처리한다.")   
+      student += 1
+    ``` 
+    - for 반복문
+    > 컬렉션의 요소를 순서대로 반복하면서 실행된다.
+    ```python
+    for student in [1, 2, 3, 4, 5]:   
+      print(student, "번 학생의 성적을 처리한다.")
+    ``` 
+    - range
+    > 컬렉션의 범위가 넓다면 하나하나 입력할 수 없으니 처음과 끝값을 입력해서 컬렉션을 만들어준다. 끝값은 +1해서 입력해주자
+    ```python
+    sum = 0 
+    for num in range(1, 101):   
+      sum += num
+
+    print("sum = ", sum)
+    ``` 
+    - 제어 변수
+    > 반복문 내부에서 변화를 주기 위해 사용한다.
+    ```python
+    for num in range(1, 11):   
+      if num % 2 == 0:       #2로 나눌때 나머지가 0이라면 짝수겠지
+        print(num, "짝수")   
+      else:       
+        print(num, "홀수")
+    ``` 
+
+    - break
+    > 반복문을 실행 중에 중지해야할 때 사용한다.
+    ```python
+    score = [92, 86, 68, 120, 56] 
+    for s in score:   
+      if s < 0 or s > 100:      
+        break   
+      print(s)
+    print("성적 처리 끝")
+    ``` 
+    
+    - continue
+    > 반복문중 건너 뛰고 나머지를 수행할 때 사용한다.
+    ```python
+    score = [92, 86, 68, -1, 56] 
+    for s in score:   
+      if s == -1:       
+        continue   
+      print(s)
+    print("성적 처리 끝")
+    ``` 
+  - 5.2 **루프의 활용**
+    - 이중 루프(구구단)
+    > 반복문 안에 다른 반복문이 중첩되어 사용한다.
+    ```python
+     for i in range(2,10):
+         print(i,"단")             # 시작하기전 몇단인지 알려주기위해
+         for j in range(1,10):
+             print(i,"x",j,"=",i*j)
+         print()                   # 단이 끝나고 한줄 띄어주기 위해
+    ``` 
+    
+    - 무한 루프(문제 맞출때까지)
+    > 반복 횟수를 정하지 않고 무한히 반복하다가 중간에 조건을 충족하면 탈출한다.while문만 가능하고 for문은 불가능하다.
+    ```python
+    print("3 + 4 = ?") 
+    while True:   
+      a = int(input("정답을 입력하시오 : "))   
+      if a == 7:       
+        break 
+    print("참 잘했어요")
+    ``` 
 ### 함수
 ### 문자열관리
 ### 반복문

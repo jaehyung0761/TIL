@@ -26,3 +26,35 @@ print("컴퓨터 : "+computer,"",sep="\n")
   1. [Variables](#variables)
 
 ## Types
+sdd
+d
+d
+d
+d
+d
+
+d
+d
+d
+d
+d
+
+d
+d
+d
+d
+
+d
+d
+d
+
+d
+d
+d
+d
+
+d
+d
+d
+
+d

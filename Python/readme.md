@@ -292,7 +292,8 @@
     else:
         print("졌습니다 다음기회에")
     ```
-    
+**[⬆ back to top](#table-of-contents)**
+
 ### 반복문
   - 5.1 **반복문**
     - while 반복문
@@ -370,7 +371,59 @@
         break 
     print("참 잘했어요")
     ``` 
+**[⬆ back to top](#table-of-contents)**
+
 ### 함수
+  - 6.1 **함수와 인수**
+    - 함수
+    > 함수는 반복되는 코드를 줄여주고 def키워드로 생성한다. 파이썬은 처음부터 순서대로 읽어 실행하는 인터프리터 언어이기 때문에 함수를 호출하기전에 함수가 먼저 정의되어 있어야 한다.
+    ```python
+    def calcsum(n):              # 함수정의
+      sum = 0   
+      for num in range(n + 1):       
+        sum += num   
+      return sum
+      
+      print(calcsum(4))          # 호출
+    ``` 
+    
+    - 인수 or 매개 변수
+    > 인수는 ()안에 개수 제한없이 입력하여 전달가능하다.
+    ```python
+    def calcsum10():          # 인수가 없는 경우
+      sum = 0   
+      for num in range(11):       
+        sum += num   
+      return sum
+    ``` 
+    ```python
+    def calcsumrange(begin, end):      # 인수가 여러개인 경우
+      sum = 0   
+      for num in range(begin, end +1): #  끝값은 +1을 시켜줘야한다  
+        sum += num   
+      return sum
+
+      print("3 ~ 7 =", calcsumrange(3, 7))
+     ``` 
+     
+    - 리턴값
+    > 함수 실행 결과를 돌려주고 값이 없거나 하나만 쓸 수 있다.
+    
+    - pass
+    > 아무 동작도 하지 않기 때문에 함수의 내용을 나중에 작성 해야할 경우 사용한다.
+    ```python
+    def calctotal():   # 함수의 내용을 나중에 작성할 때
+      pass
+    ``` 
+    ```python
+    if sum >= 90:       # if else내용을 나중에 작성할 때
+      pass 
+    else:   
+      pass
+    ``` 
+  - 6.2 **인수의 형식**
+  
+  - 6.3 **변수의 범위**
 ### 문자열관리
 ### 반복문
 

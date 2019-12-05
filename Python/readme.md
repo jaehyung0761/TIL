@@ -455,6 +455,7 @@
     print(s.index('r')) 
     print(s.count('n'))
     ``` 
+ 
     - 조사
     > 특정 문자가 포함되어 있는지 없는지 조사
     ```python
@@ -473,6 +474,67 @@
     if file.endswith(".jpg"):   
       print("그림 파일입니다."
     ``` 
-### 반복문
+    > 모든 문자가 숫자인지 조사 / 변수명.isdecimal()
+    ```python
+    height = input("키를 입력하세요")                #타입이 문자열이라도 그안에 숫자만 있는지 확인한다.
+    if height.isdecimal():
+        print("키는 ", height, "입니다.")
+    else:
+        print("다시 입력하세요")
+    ``` 
+    
+    - 변경
+    > 영문의 대소문자를 변경한다
+    ```python
+    s = "Good morning, my love KIM."
+    print(s.upper())                  #GOOD MORNING, MY LOVE KIM.
+    print(s.lower())                  #good morning, my love kim.
+    print(s.capitalize())             #Good morning, my love kim.
+    print(s.title())                  #Good Morning, My Love Kim.
+    ``` 
+    ```python
+    python = input("파이썬의 영문 철자를 입력하시오 :")    #대문자로 입력해도 철자만 맞으면 정답처리
+    if python.lower() == "python":   
+      print("맞췄습니다.") 
+    else:   
+      print("땡!!!")
+    ``` 
+    
+    - 분할
+    > 구분자를 기준으로 문자열을 분할 할 수 있다. / 변수명.split()
+    ```python
+    s = "짜장 짬뽕 탕수육"
+    print(s.split())                   #결과값 : ['짜장', '짬뽕', '탕수육']
+    ``` 
+    ```python
+    s2 = "서울->대전->대구->부산"
+    for j in s2.split("->"):
+        print(j)             
+    ``` 
+    
+    - 대체
+    > 특정 문자열을 다른 문자열로 바꾼다. / 변수명.replace("바꿀값","바뀔값")
+    ```python
+    s = "독도는 일본땅이다"
+    print(s.replace("일본","한국")))      #결과값 : 독도는 한국땅이다
+    ``` 
+    - 조인
+    > 특정 문자열을 기준으로 문자열을 합친다.
+    ```python
+    print(",".join("abcd"))                   #결과값 : a,b,c,d
+    print(",".join(['a','b','c','d']))        #결과값 : a,b,c,d
+    ``` 
+
+  - 7.3 **포맷팅**
+    - 포맷팅
+    > 문자열 사이사이에 다른 정보를 삽입하기 위한 방법이다.
+    ```python
+    anni = "광복절"
+    mo = 8
+    day = 15
+
+    print("%d월 %d일은 %s이다" %(mo,day,anni))  #결과값 : 8월 15일은 광복절이다
+    ``` 
+### 리스트와 튜플
 
 

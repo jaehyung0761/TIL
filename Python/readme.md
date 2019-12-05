@@ -424,6 +424,9 @@
   - 6.2 **인수의 형식**
   
   - 6.3 **변수의 범위**
+  
+**[⬆ back to top](#table-of-contents)**
+
 ### 문자열관리
   - 7.1 **문자열 분리**
     - 첨자
@@ -566,6 +569,9 @@
     print("이름 : {1} / 나이 : {0} / 키 : {2}".format(age,name,h))   # 인덱스 번호를 입력해서 순서 설정가능
     print("이름 :{name}, 나이 :{age}, 키 :{height}".format(age= age, height= height, name= name)  # 변수명을 입력해서 순서 설정가능
     ``` 
+    
+**[⬆ back to top](#table-of-contents)**
+
 ### 리스트와튜플
   - 8.1 **리스트**
     - 리스트
@@ -690,9 +696,12 @@
       tuple_value[1] = 100          # 변경 불가능
       del tuple_value[1             # 삭제 불가능
     ```
+    
+**[⬆ back to top](#table-of-contents)**
+
 ### 딕셔너리와집합
   - 9.1 **딕셔너리**
-    - 딕셔너리
+    - 딕셔너리 관리
     > 키와 값의 쌍을 저장할 수 있고 {}로 만든다. 키는 중복이 안되고 변경도 안된다. 
     ```python
     dic = {"boy": "소년", "school": "학교", "book": "책"} 

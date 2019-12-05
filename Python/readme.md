@@ -563,7 +563,158 @@
     age = 16 
     height = 162.6
     print("이름 :{}, 나이 :{}, 키 :{}".format(name, age, height))
+    print("이름 : {1} / 나이 : {0} / 키 : {2}".format(age,name,h))   # 인덱스 번호를 입력해서 순서 설정가능
+    print("이름 :{name}, 나이 :{age}, 키 :{height}".format(age= age, height= height, name= name)  # 변수명을 입력해서 순서 설정가능
     ``` 
 ### 리스트와튜플
+  - 8.1 **리스트**
+    - 리스트
+    > 여러개의 값을 []괄호를 사용하여 집합으로 저장할 수 있다.
+    ```python
+    score = [90, 80, 70, 55, 20]
+    sum = 0
+    for i in score:
+        sum += i
+    print("총점은? : {}점".format(sum))
+    print("평균은? : {}점".format(sum/len(score)))
+    ```
+    > 리스트의 값은 인덱싱할 수 있다.
+    ```python
+    nums = [1, 2, 3, 4, 5, 6, 7, 8, 9] 
+    print(nums[2:5])         # 2~5까지 
+    print(nums[:4])          # 처음부터 4까지 
+    print(nums[6:])          # 6에서 끝까지 
+    print(nums[1:7:2])       # 1~7까지 하나씩 건너
+    ```
+    > 리스트의 값은 변경 가능하다.
+    ```python
+    score = [90,80,66,20,100]
+    score[2]=100
+    print(score)                  # 결과값 : [90,80,100,20,100]
+    ```
+    - 이중 리스트
+    > 리스트 안에 리스트를 넣을 수 있다.
+    ```python
+    score = [
+        [91,80,54,25],
+        [82,25,45,69],
+        [22,55,44,88]
+    ]
+    num = 0
+    for i in score:
+        sum = 0
+        num+=1
+        for j in i:
+            sum += j
+        print("{}반의 총점은 {}입니다".format(num,sum))
+        print("{}반의 평균은 {}입니다.".format(num,sum/len(i)))
+    ```
+    - 리스트 컴프리헨션
+    > 리스트 안의 요소가 일정한 규칙을 가졌다면 간단하게 입력가능하다.
+    ```python
+     nums = [num for num in range(1,11)]
+     print(nums)
+    ```
+  - 8.2 **리스트 관리**
+    - 추가
+    > append는 맨뒤로 추가하고 insert는 원하는 인덱스 위치에 값을 추가할 수 있다.
+    ```python
+    nums = [1, 2, 3, 4] 
+    nums.append(5) 
+    nums.insert(2, 99) 
+    print(nums)
+    ```
+    - 삭제
+    > 요소를 삭제할 때는 삭제하는 대상에 따라 방법이 다르다.
+    ```python
+    score = [88, 95, 70, 100, 99, 80, 78, 50]     
+    score.remove(100)        # 값을 삭제할 때
+    del score[2]             # 특정 인덱스 값 삭제할 때
+    score[1:4] = []          # 특정 범위 값 삭제할 때
+    score.pop()              # 마지막 값 삭제할 때
+    ```
+    - 검색
+    > index-위치, count-갯수
+    ```python
+    score = [88, 95, 70, 100, 99, 80, 78, 50] 
+    score.index(100)   # 위치
+    score.count(100)   # 갯수
+    ```
+    > len-길이, max-최대값, min-최소값
+    ```python
+    score = [88, 95, 70, 100, 99, 80, 78, 50]
+    print("학생 수는 {}명 입니다.".format(len(score)))   
+    print("최고점수는 {}명 입니다.".format(max(score)))   
+    print("최저점수는 {}명 입니다.".format(min(score)))   
+    ```
+    > in / not in - 있는지 없는지 검색
+    ```python
+    ans = input("결제 하시겠습니까?")       
+    if ans in ['yes','y','네']:
+        print("결제가 완료되었습니다.")
+    else:
+        print("안녕히 가세요")
+    ```
+    ```
+    ans = input("결제 하시겠습니까? ") 
+    if ans not in ['no', 'n', '아니오']:   
+      print("결제 완료 되었습니다.")
+    else:   
+      print("안녕히 가세요."
+    ```
+    - 정렬
+    > sort-순서정렬, reverse-반대로 정렬
+    ```python
+    score = [88, 95, 70, 100, 99, 80, 78, 50] 
+    score.sort() 
+    score.reverse() 
+    ```
+    > sorted-원본을 유지하고 순서 정렬
+    ```python
+    score = [88, 95, 70, 100, 99, 80, 78, 50] 
+    score_sort = sorted(score)                  #score는 원본, score_sort는 정렬
+    ```
+    
+  - 8.3 **튜플**
+    - 튜플
+    > ()를 써서 값을 저장하고 편집이 불가능하다. 하지만 가볍고 속도가 빠르고 편집이 불가능해 안전한 측면이 있다.
+    ```python
+    tuple_value = 2,   #값을 하나만 입력할 경우 뒤에 ,를 붙여준다.
+    ```
+    > 인덱싱과 값을 추가하는것은 가능하지만 값 변경 및 삭제는 불가능하다.
+    ```python
+      tuple_value = 1, 2, 3, 4, 5
+      print(tuple_value[1:4])       # 인덱싱 가능
+      print(tuple_value + (6, 7)    # 추가 가능
 
-
+      tuple_value[1] = 100          # 변경 불가능
+      del tuple_value[1             # 삭제 불가능
+    ```
+### 딕셔너리와집합
+  - 9.1 **딕셔너리**
+    - 딕셔너리
+    > 키와 값의 쌍을 저장할 수 있고 {}로 만든다. 키는 중복이 안되고 변경도 안된다. 
+    ```python
+    dic = {"boy": "소년", "school": "학교", "book": "책"} 
+    print(dic["boy"])                                           # 결과값:소년
+    ```
+    > 값은 변경가능하고 키를 삭제하면 밸류도 함께 삭제된다.
+    ```
+    dic = {"boy": "소년", "school": "학교", "book": "책"}
+    dic["boy"] = "남자애"
+    del dic['book'] 
+    print(dic)
+    ```
+    > 키와 값을 가져올 수 있다.
+    ```
+    dic = {"boy": "소년", "school": "학교", "book": "책"} 
+    print(dic.keys())     # 결과값 : dict_keys(['boy', 'school', 'book'])
+    print(dic.values())   # 결과값 : dict_values(['소년', '학교', '책'])
+    print(dic.items())    # 결과값 : dict_items([('boy', '소년'), ('school', '학교'), ('book', '책')])
+    ```
+    > 두개의 딕셔너리를 update()를 통해 병합할 수 있다.
+    ```
+    dic = {"boy": "소년", "school": "학교", "book": "책"} 
+    dic2 = {"student": "학생", "teacher": "선생님", "book": "서적"} 
+    dic.update(dic2)         # dic과 dic2의 키값이 같으면 dic2값이 적용되고 dic에 없는 키값은 추가된다.
+    ```

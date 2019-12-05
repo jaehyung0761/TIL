@@ -425,6 +425,54 @@
   
   - 6.3 **변수의 범위**
 ### 문자열관리
+  - 7.1 **문자열 분리**
+    - 첨자
+    > 앞에서는 0부터 시작하고 뒤에서는 -1부터 시작한다.
+    ```python
+    s = "python" 
+    print(s[2])   #t
+    print(s[-2])  #o
+    ``` 
+    - 문자열 변경
+    > pass
+    ```python
+    pass
+    ``` 
+  - 7.2 **문자열 메서드**
+    - 검색
+    > 특정 문자의 위치를 검색하는 메서드로 len 내장함수는 문자열의 길이를 리턴한다.
+    ```python
+    find - 문자열 위치를 조사한다.                    #문자열이 없을경우 -1리턴
+    rfind - 뒤에서부터 가까운 문자열 위치를 조사한다.   #문자열이 없을경우 -1리턴
+    index - 문자열 위치를 조사한다.                    #문자열이 없을경우 오류
+    count - 특정 문자의 개수를 센다.                   #문자열이 없을경우 0리턴
+    ``` 
+    ```python
+    s = "python programming" 
+    print(len(s)) 
+    print(s.find('o')) 
+    print(s.rfind('o'))     
+    print(s.index('r')) 
+    print(s.count('n'))
+    ``` 
+    - 조사
+    > 특정 문자가 포함되어 있는지 없는지 조사
+    ```python
+    s = "python programming" 
+    print('a' in s) 
+    print('pro' in s) 
+    print('x' not in s)
+    ``` 
+    > 특정 문자로 시작하고 끝나는것을 조사 / 변수명.startswith or 변수명.endswith
+    ```python
+    name = "김한결" 
+    if name.startswith("김"):   
+      print("김가입니다.") 
+
+    file = "girl.jpg" 
+    if file.endswith(".jpg"):   
+      print("그림 파일입니다."
+    ``` 
 ### 반복문
 
 

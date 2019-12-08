@@ -13,8 +13,13 @@
   1. [함수](#함수)
   1. [문자열관리](#문자열관리)
   1. [리스트와튜플](#리스트와튜플)  
-
-
+  1. [사전과집합](#사전과집합)  
+  1. [컬렉션관리](#컬렉션관리)  
+  1. [표준모듈](#표준모듈)  
+  1. [예외처리](#예외처리)  
+  1. [파일](#파일)  
+  
+  
 ### 변수
   - 1.1 **기본구조**\
     -세미콜론(;)을 사용하지 않는다.\
@@ -376,7 +381,8 @@
 ### 함수
   - 6.1 **함수와 인수**
     - 함수
-    > 함수는 반복되는 코드를 줄여주고 def키워드로 생성한다. 파이썬은 처음부터 순서대로 읽어 실행하는 인터프리터 언어이기 때문에 함수를 호출하기전에 함수가 먼저 정의되어 있어야 한다.
+    > 함수는 반복되는 코드를 줄여주고 def키워드로 생성한다. 또한 코드수정이 요이하고 재사용하기 쉽다.
+    > 파이썬은 처음부터 순서대로 읽어 실행하는 인터프리터 언어이기 때문에 함수를 호출하기전에 함수가 먼저 정의되어 있어야 한다.
     ```python
     def calcsum(n):              # 함수정의
       sum = 0   
@@ -422,8 +428,73 @@
       pass
     ``` 
   - 6.2 **인수의 형식**
-  
+    - 가변인수
+    > 임의 개수의 인수를 받을때 인수앞에 \*를 붙여서 사용한다. 가변인수는 인수의 마지막에 와야한다.
+    ```python
+    def intsum(*ints):            # 인수를 모두 더할 수 있다
+      sum = 0
+      for num in ints:
+        sum += num 
+      return sum
+      
+      print(intsum(1, 2, 3)) 
+    ```
+    - 인수의 기본값
+    > 잘 변하는 값이 아니라면 인수의 기본값을 지정해서 호출할 때 생략이 가능하다.
+    ```python
+    def calcstep(begin, end, step = 1):
+      sum = 0
+      for num in range(begin, end + 1, step):
+        sum += num 
+      return sum
+      print(calcstep(1, 10))
+    ```
+    - 키워드 인수
+    > 인수가 많을경우 호출할때 인수의 키워드를 지정해서 호출할 수 있다.
+    ```python
+    def calcstep(begin, end, step):
+      sum = 0
+      for num in range(begin, end + 1, step):
+        sum += num return sum
+
+    print(calcstep(begin=3, end=5, step=1)) 
+    print(calcstep(step=1, end=5, begin=3))
+    ```
   - 6.3 **변수의 범위**
+    - 지역변수
+    > 함수 내부에 선언하는 변수로 밖에서는 사용할 수 없다.
+    ```python
+    def kim():
+        temp = "김과장의 함수" 
+        print(temp)
+
+    print(temp)              # NameError
+    ```
+    - 전역변수
+    > 함수 밖에 선언하는 변수로 어디서나 사용할 수 있다.
+    ```python
+    salerate = 0.9 
+    def kim():
+        print("오늘의 할인율 :", salerate)
+    def lee():
+        price = 1000
+        print("가격 :",price * salerate)
+    kim()                # 결과값 : 0.9
+    salerate = 1.1 
+    lee()                # 결과값 : 1100   함수 호출전에 선언된 변수의 값이 적용된다.(선언할때는 상관없다)
+    ```
+    - docstring
+    > 함수의 사용법이나 주의사항을 남길때 선언문과 본체사이에 작성한다. help함수를 사용해 출력가능하다.
+    ```python
+    def calcsum(n):
+        """합계를 구해서 리턴한다."""
+        sum = 0
+        for i in range(n+1):
+            sum += i
+        return sum
+
+    help(calcsum)        # 결과값 : 합계를 구해서 리턴한다.
+    ```
   
 **[⬆ back to top](#table-of-contents)**
 
@@ -727,3 +798,149 @@
     dic2 = {"student": "학생", "teacher": "선생님", "book": "서적"} 
     dic.update(dic2)         # dic과 dic2의 키값이 같으면 dic2값이 적용되고 dic에 없는 키값은 추가된다.
     ```
+    > 딕셔너리를 응용하여 알파벳 문자의 횟수를 셀 수 있다.
+    ```
+    song = """by the rivers of babylon, there we sat down yeah we wept, when we remember zion.
+    when the wicked carried us away in captivity required from us a song
+    new how shall we sing the lord's song in a strange land """
+    
+    alphabet = dic()
+    for i in song:
+        if i.isalphabet()==False:
+            continue
+        i = i.lower()
+        if i in alphabet:
+            alphabet[i] += 1
+        else:
+            alphabet[i] = 1
+    ```
+  - 9.2 **집합**
+    - 집합
+    > 집합은 키만 저장가능하고 수정가능하다. 딕셔너리와 같이 {}로 선언한다. 
+    ```python
+    asia = {"korea", "china", "japan"} 
+    asia.add("vietnam")                               # 추가
+    asia.remove("japan")                              # 삭제
+    asia.update({'singapore', 'hongkong', 'korea'})   # 업데이트
+    ```
+    ```python
+    | - 합집합(union)
+    & - 교집합(intersection)
+    - - 차집합(difference)
+    ```
+    
+**[⬆ back to top](#table-of-contents)**
+
+### 컬렉션관리
+  - 10.1 **컬렉션관리 함수**
+    - enumerate
+    > 인덱스와 값을 한꺼번에 구해주는 내장함수이다.
+    ```python
+    score = [88, 95, 70, 100, 99]
+    for no, i in enumerate(score,1):
+        print(no, "번 학생의 성적 :", s)
+    ```
+  - 10.2 **람다 함수**
+    - lambda
+    > 함수를 선언할필요 없이 입력과 출력으로 정의된 축약방식이다.
+    ```python
+    score = [88, 95, 70, 100, 99]
+    for i in filter(lambda x:x<90,score):
+        print(i)
+    ```
+    ```python
+    score = [88, 95, 70, 100, 99]
+    for i in map(lambda x:x/2,score):
+        print(i)
+    ```
+  - 10.3 **컬렉션의 사본**
+    - 컬렉션의 사본
+    > 리스트는 copy() 메서드를 활용해서 사본을 만들어야한다. 사용하지 않을경우 원본이 변한다.
+    ```python
+    list1 = [1, 2, 3] 
+    list2 = list1.copy()
+    list2[1] = 100 
+    print(list1)             # 결과값 : [1, 2, 3]
+    print(list2)             # 결과값 : [1, 100, 3]
+    ```
+    
+**[⬆ back to top](#table-of-contents)**
+
+### 표준모듈
+  - 11.1 **시간**
+    - 시간 조사
+    > 현재 날짜와 시간을 알 수 있다.
+    ```python
+    import datetime
+    now = datetime.datetime.now()
+    print("%d년 %d월 %d일" % (now.year, now.month, now.day)) 
+    print("%d:%d:%d" % (now.hour, now.minute, now.second))
+    ```
+  - 11.2 **난수**
+    - 난수
+    > random 모듈로 난수나 0에서 1미만의 실수를 생성할 수 있다.
+    ```python
+    import random 
+    
+    for i in range(5):
+      print(random.random())
+    for i in range(5): 
+      print(random.randint(1, 10))
+    ```
+    
+**[⬆ back to top](#table-of-contents)**
+
+### 예외처리
+  - 11.1 **예외 처리**
+    - 예외 처리
+    > 예외 종류에 따라 적절한 처리를 할 수 있다.
+    ```python
+    try:
+      print(calcsum(10)) 
+    except ValueError:
+      print("입력값이 잘못되었습니다.")
+    ```
+    ```python
+    str = "89" 
+    try:
+      score = int(str) 
+      print(score)
+      a = str[5]
+    except ValueError:
+      print("점수의 형식이 잘못되었습니다.")
+    except IndexError:
+      print("첨자의 범위를 벗어났습니다.")
+    ```
+    
+**[⬆ back to top](#table-of-contents)**
+
+### 파일
+  - 12.1 **파일 입출력**
+    - 파일 쓰기
+    > 파일을 생서하고 내용을 저장할 수 있다. 마지막엔 꼭 close()를 해줘야한다.
+    ```python
+    file = open("live.txt", "w", encoding='UTF-8') 
+    file.write("""
+    삶이 그대를 속일지라도
+    슬퍼하거나 노하지 말라!
+    우울한 날들을 견디면 믿으라, 기쁨의 날이 오리니 
+    """)
+    file.close()
+    ```
+    - 파일 읽기
+    > 생성된 파일을 읽어서 출력할 수 있다. 한줄만 읽고싶다면 readline()을 사용한다.
+    ```python
+    file = open("live.txt", "r") 
+    text = file.read()
+    print(text)
+    file.close()
+    ```
+    - 파일 내용 추가
+    > 생성된 파일의 내용을 추가할 수 있다.
+    ```python
+    file = open("live.txt", "a") 
+    file.write("감사합니다.")
+    file.close()
+    ```
+  
+**[⬆ back to top](#table-of-contents)**

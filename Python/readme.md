@@ -1,6 +1,6 @@
-# Tody I Learned
+# Tody I Learned Python
 
-> **Note**: 파이썬 기본 문법 / 라이브러리 사용 / 웹 크롤링
+> **Note**: 파이썬 기본 문법
 
 
 ## Table of Contents

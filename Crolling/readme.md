@@ -9,7 +9,7 @@
   1. [Pandas](#Pandas)
   
 ### Library
-  - 1.1 **Library**\
+  - 1.1 **Library**
     - requests
     >  웹사이트를 접속하여 HTML을 가져오는 라이브러리
     ```python
@@ -28,7 +28,7 @@
     bs4_object = bs4.BeautifulSoup(html.text,"html.parser")
     ```
 ### WebCrolling
-  - 2.1 **WebCrolling**\
+  - 2.1 **WebCrolling**
     - 네이버 날씨 페이지 크롤링 하기
     >  특정지역의 날씨 크롤링 하기
     ```python
@@ -80,7 +80,7 @@
 **[⬆ back to top](#table-of-contents)**
 
 ### Pandas
-  - 3.1 **Pandas**\
+  - 3.1 **Pandas**
     - Pandas
     >  데이터 분석을 위해 자주 사용되는 라이브러리로 행과 열로 이루어진 데이터 객체를 만들어 사용한다.
     - DataFrame
@@ -124,3 +124,5 @@
     df = pd.DataFrame(data)
     df.to_excel("gov_practice2.xlsx")            # 데이터 프레임을 엑셀파일로 내보내서 엑셀에서 사용할 수 있다.
     ```
+
+**[⬆ back to top](#table-of-contents)**

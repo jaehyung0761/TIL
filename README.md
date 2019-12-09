@@ -1,9 +1,9 @@
 TIL
 ---
 
-###[Python](./Python/readme.md)\n
+[Python](./Python/readme.md)
 
-###[Crolling](./Crolling/readme.md)
+[Crolling](./Crolling/readme.md)
 
 
 	

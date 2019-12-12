@@ -1,6 +1,6 @@
 # Tody I Learned Statistic
 
-> **Note**: 기초 통계학의 이해
+> **Note**: 기초 통계학의 이해\
 https://www.youtube.com/playlist?list=PLsri7w6p16vs-rMb1uXHfh3FiCk2WjEUG
 
 

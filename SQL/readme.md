@@ -79,8 +79,7 @@
     SELECT *
     FROM   employees
     WHERE  date_format(hire_date, '%Y%m%d') BETWEEN 19850101 AND 19860101
-    ORDER BY hire_date desc           # 정렬
-    ;
+    ORDER BY hire_date desc           # 정렬;
     ```
     - **`IN함수`**
     ```python
@@ -90,8 +89,7 @@
     ```
     SELECT *
     FROM   employees
-    WHERE  last_name IN ('Genin','Facello')
-    ;
+    WHERE  last_name IN ('Genin','Facello');
     ```
     - **`LIKE함수`**
     ```python
@@ -104,14 +102,12 @@
     ```
     SELECT emp_no
     FROM titles
-    WHERE title LIKE '%Engineer'
-    ;
+    WHERE title LIKE '%Engineer';
     ```
     - **`NULL함수`**
     > 사원중에서 salary가 NULL이 아닌 사원의 정보를 가져와 보자.
     ```python
     SELECT *
     FROM   salaries
-    WHERE  salary IS NOT NULL
-    ;
+    WHERE  salary IS NOT NULL;
     ```

@@ -53,7 +53,7 @@
     SELECT *
     FROM   employees
     WHERE  last_name = 'Genin'
-    OR		 last_name = 'Facello';
+    OR     last_name = 'Facello';
     ```
     - **`BETWEEN AND`**
     > 사원중에서 사번이 20000이상이고, 20100이하인 사람들의 이름과 성별을 출력해 보자.

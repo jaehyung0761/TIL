@@ -100,8 +100,8 @@
       > 사원중에서 직무가 'Engineer'로 끝나는 사람의 사번을 출력해보자.
       ```
       SELECT emp_no
-      FROM titles
-      WHERE title LIKE '%Engineer';
+      FROM   titles
+      WHERE  title LIKE '%Engineer';
       ```
     - **`NULL함수`**
       > 사원중에서 salary가 NULL이 아닌 사원의 정보를 가져와 보자.
@@ -109,4 +109,64 @@
       SELECT *
       FROM   salaries
       WHERE  salary IS NOT NULL;
+      ```
+    - **`count함수`**
+      > 사원번호가 d004 또는 d002인 사원의 수를 출력해보자.
+      ```python
+      SELECT COUNT(dept_no) AS 사원수
+      FROM   dept_emp
+      WHERE  dept_no IN ('d004','d002')
+      ```
+    - **`GROUP BY`**
+      > 1999년 입사자를 월별로 몇명이 입사했는지 출력해보자.
+      ```python
+      SELECT   MONTH(hire_date),COUNT(emp_no)
+      FROM     employees
+      WHERE    YEAR(hire_date) = 1999
+      GROUP BY MONTH(hire_date)
+      ```
+    - **`AVG 함수`**
+      > 영업이나 마케팅 업무를 하는 사원을 대상으로 직무별 평균급여를 계산해보자.
+      ```python
+      SELECT    job_id,
+                avg(salary)
+      FROM      hr_employees
+      WHERE     job_id LIKE 'SA%'
+      OR        job_id LIKE 'MK%'
+      GROUP BY  job_id
+      ```
+    - **`MOD 함수`**
+      > 짝수해에 입사한 사원의 정보를 얻어보자.
+      ```python
+      SELECT * 
+      FROM   hr_employees
+      WHERE  MOD(DATE_FORMAT(hire_date,'%Y'),2)=0
+      ```
+    - **`SELECT CASE`**
+      > 짝수해에 입사한 사원과 홀수해에 입사한 사원의 정보를 얻어보자.
+      ```python
+      SELECT CASE mod(YEAR(hire_date),2)
+            WHEN 0 THEN '짝수년도'
+            WHEN 1 THEN '홀수년도'
+           END AS '년도',
+           COUNT(employee_id) AS 사원수
+      FROM   hr_employees
+      GROUP BY mod(YEAR(hire_date),2)
+      ```
+    - **`ROUND 함수`**
+      > 숫자를 지정한 자리수로 반올림하여 변환하는 함수
+      ```python
+      ROUND(123.32429382,2)
+      ```
+    - **`CONCAT 함수`**
+      > 사원의 이름을 출력해보자.
+      ```python
+      SELECT CONCAT(first_name,' ',last_name)
+      FROM   hr_employees
+      WHERE  employee_id = 105
+      ```
+    - **`SYSDATE 함수`**
+      > 현재 근무하는 사원의 재직기간을 나타내보시오.
+      ```python
+
       ```
